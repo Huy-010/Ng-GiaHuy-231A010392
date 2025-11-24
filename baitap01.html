@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 1 - Tìm kiếm sản phẩm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Ngô Gia Huy-231A010392</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="baitap01.html" class="active">Bài tập 1</a></li>
+                <li><a href="baitap02.html">Bài tập 2</a></li>
+                <li><a href="baitap03.html">Bài tập 3</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <main class="container main-content">
+        <div class="page-header">
+            <h1>Bài Tập 1: Tìm Kiếm Sản Phẩm</h1>
+            <p>Hệ thống tìm kiếm với validation và xử lý lỗi</p>
+        </div>
+
+        
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Tìm kiếm sản phẩm..."
+                    class="search-input"
+                >
+            </div>
+            <div id="searchError" class="error-message" style="display: none;"></div>
+        </div>
+
+       
+        <div id="productsGrid" class="products-grid"></div>
+
+        
+        <div class="logic-box">
+            <h3>💡 Logic Tư Duy - Bài Tập 1:</h3>
+            <ul>
+                <li><strong>Xử lý Input:</strong> Sanitize input bằng cách loại bỏ các ký tự đặc biệt (&lt;, &gt;, /, \) để tránh XSS injection</li>
+                <li><strong>Tìm kiếm:</strong> Sử dụng toLowerCase() để tìm kiếm không phân biệt hoa thường</li>
+                <li><strong>Tối ưu:</strong> Filter array với includes() - độ phức tạp O(n), phù hợp với dataset nhỏ. Với dataset lớn nên dùng search index hoặc Trie</li>
+                <li><strong>UX:</strong> Hiển thị thông báo lỗi thân thiện khi không tìm thấy kết quả thay vì để trống</li>
+                <li><strong>Security:</strong> Không trực tiếp render HTML từ input để tránh DOM-based XSS</li>
+                <li><strong>Performance:</strong> Có thể thêm debouncing để giảm số lần xử lý khi user đang gõ</li>
+            </ul>
+        </div>
+    </main>
+
+  
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bài Tập Thực Hành Web - MSSV: 231A010392</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+      
+        document.addEventListener('DOMContentLoaded', function() {
+            initBaiTap01();
+        });
+    </script>
+</body>
+</html>

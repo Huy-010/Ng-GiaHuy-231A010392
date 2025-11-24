@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 3 - Countdown Timer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Ngô Gia Huy-231A010392</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="baitap01.html">Bài tập 1</a></li>
+                <li><a href="baitap02.html">Bài tập 2</a></li>
+                <li><a href="baitap03.html" class="active">Bài tập 3</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <main class="container main-content">
+        <div class="page-header">
+            <h1>Bài Tập 3: Countdown Timer</h1>
+            <p>Đồng hồ đếm ngược 10 phút với animation</p>
+        </div>
+
+        
+        <div class="timer-container">
+            <div id="timerDisplay" class="timer-display">
+                <div class="timer-icon">⏰</div>
+                <div id="timeText" class="timer-text">10:00</div>
+                <div id="timerStatus" class="timer-status">Thời gian còn lại</div>
+            </div>
+        </div>
+
+        
+        <div class="timer-controls">
+            <button id="startBtn" class="btn btn-success">
+                ▶️ Bắt đầu
+            </button>
+            <button id="pauseBtn" class="btn btn-warning" style="display: none;">
+                ⏸️ Tạm dừng
+            </button>
+            <button id="resetBtn" class="btn btn-secondary">
+                🔄 Reset
+            </button>
+        </div>
+
+        
+        <div id="timerModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-icon">⏰</div>
+                <h2>Hết giờ!</h2>
+                <p>Countdown timer đã kết thúc</p>
+                <button id="closeModal" class="btn btn-primary">
+                    Đóng
+                </button>
+            </div>
+        </div>
+
+        
+        <div class="logic-box">
+            <h3>💡 Logic Tư Duy - Bài Tập 3:</h3>
+            <ul>
+                <li><strong>setInterval:</strong> Sử dụng setInterval để cập nhật thời gian mỗi giây (1000ms)</li>
+                <li><strong>Memory Leak Prevention:</strong> 
+                    <ul>
+                        <li>Lưu intervalId vào biến global để có thể clearInterval</li>
+                        <li>Luôn clearInterval khi pause/stop để giải phóng bộ nhớ</li>
+                        <li>Clear interval trước khi tạo interval mới</li>
+                    </ul>
+                </li>
+                <li><strong>Animation CSS:</strong> 
+                    <ul>
+                        <li>Thêm class 'warning' khi thời gian &lt; 60s</li>
+                        <li>Sử dụng @keyframes pulse để tạo hiệu ứng nhấp nháy</li>
+                        <li>Transition smooth cho màu sắc</li>
+                    </ul>
+                </li>
+                <li><strong>Format Time:</strong> Chuyển đổi giây sang MM:SS, padding 0 cho số < 10</li>
+                <li><strong>Modal Alert:</strong> Hiển thị overlay modal khi hết giờ, block user interaction</li>
+                <li><strong>Deploy & Server Sync:</strong>
+                    <ul>
+                        <li>Client-side timer có thể bị sai lệch do tab inactive</li>
+                        <li>Nên lưu startTime và tính toán dựa trên Date.now()</li>
+                        <li>Hoặc sync với server time qua NTP API</li>
+                        <li>Ví dụ: fetch('https://worldtimeapi.org/api/ip')</li>
+                    </ul>
+                </li>
+                <li><strong>Edge Cases:</strong> Xử lý khi user switch tab, page visibility API</li>
+            </ul>
+        </div>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bài Tập Thực Hành Web - MSSV: 231A010392</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            initBaiTap03();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 2 - Form Đăng Ký</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Ngô Gia Huy-231A010392</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="baitap01.html">Bài tập 1</a></li>
+                <li><a href="baitap02.html" class="active">Bài tập 2</a></li>
+                <li><a href="baitap03.html">Bài tập 3</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+    <main class="container main-content">
+        <div class="page-header">
+            <h1>Bài Tập 2: Form Đăng Ký Người Dùng</h1>
+            <p>Validation và lưu trữ dữ liệu với LocalStorage</p>
+        </div>
+
+       
+        <div id="successMessage" class="success-message" style="display: none;">
+            ✓ Đăng ký thành công! Dữ liệu đã được lưu vào LocalStorage.
+        </div>
+
+        
+        <div class="form-container">
+            <div class="form-group">
+                <label for="fullName">
+                    <span class="label-icon">👤</span>
+                    Họ và tên
+                </label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    class="form-input"
+                    placeholder="Nhập họ và tên"
+                >
+                <span id="nameError" class="input-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <span class="label-icon">📧</span>
+                    Email
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="form-input"
+                    placeholder="example@email.com"
+                >
+                <span id="emailError" class="input-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <span class="label-icon">🔒</span>
+                    Mật khẩu
+                </label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    class="form-input"
+                    placeholder="Nhập mật khẩu"
+                >
+                <span id="passwordError" class="input-error"></span>
+                <small class="input-hint">Tối thiểu 8 ký tự, bao gồm chữ hoa, chữ thường và số</small>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input 
+                        type="checkbox" 
+                        id="agreeTerms" 
+                        class="checkbox-input"
+                    >
+                    <span>Tôi đồng ý với điều khoản sử dụng</span>
+                </label>
+                <span id="agreeError" class="input-error"></span>
+            </div>
+
+            <button id="submitBtn" class="btn btn-primary btn-large">
+                Đăng Ký
+            </button>
+        </div>
+
+        <div class="logic-box">
+            <h3>💡 Logic Tư Duy - Bài Tập 2:</h3>
+            <ul>
+    
+                <li><strong>Password Validation:</strong> Kiểm tra độ dài ≥8, có chữ hoa (/[A-Z]/), chữ thường (/[a-z]/), và số (/[0-9]/)</li>
+                <li><strong>Event Handling:</strong> Sử dụng addEventListener thay vì onsubmit để kiểm soát tốt hơn, preventDefault() để xử lý validation trước khi submit</li>
+                <li><strong>Bảo mật LocalStorage:</strong> 
+                    <ul>
+                        <li>Mã hóa mật khẩu bằng Base64 (demo) - production nên dùng bcrypt/argon2</li>
+                        <li>Lưu timestamp để tracking thời gian đăng ký</li>
+                        <li>LocalStorage không an toàn tuyệt đối - chỉ lưu dữ liệu không nhạy cảm</li>
+                        <li>Nên implement token expiration và session management</li>
+                    </ul>
+                </li>
+                <li><strong>UX:</strong> Real-time validation feedback, clear error messages, success notification</li>
+                <li><strong>Security Best Practices:</strong> Sanitize input, không lưu plain-text password, implement rate limiting cho production</li>
+            </ul>
+        </div>
+    </main>
+
+ 
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Bài Tập Thực Hành Web - MSSV: 231A010392</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initBaiTap02();
+        });
+    </script>
+</body>
+</html>
